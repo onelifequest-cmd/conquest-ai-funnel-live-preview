@@ -34,7 +34,7 @@ export function createChat({ root, pricing, reduced = false, onOpenChange = () =
   }
   const money = n => '$' + n.toLocaleString('en-US');
   root.innerHTML = `
-    <div class="chat-h"><span class="orb" style="position:relative"></span><div><b>Conquest AI agent</b><small>${LIVE ? 'Live times · test mode' : 'Scripted · nothing is booked'}</small></div><span class="tagx">PREVIEW</span><button class="x" type="button" data-close-chat aria-label="Close chat">×</button></div>
+    <div class="chat-h"><span class="orb" style="position:relative"></span><div><b>Conquest AI agent</b><small>${LIVE ? 'Live times' : 'Scripted · nothing is booked'}</small></div><span class="tagx">PREVIEW</span><button class="x" type="button" data-close-chat aria-label="Close chat">×</button></div>
     <div class="chat-b" role="log" aria-live="polite"></div>
     <form class="chat-f" autocomplete="off"><input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><input name="msg" type="text" placeholder="Type a message…" aria-label="Message" maxlength="200"><button class="send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button></form>
     <div class="chat-note">Please don't share passwords or card numbers in chat.</div>`;
