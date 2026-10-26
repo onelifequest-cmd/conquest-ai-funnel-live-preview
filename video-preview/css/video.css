@@ -34,3 +34,5 @@ body.tour-open{overflow:hidden}
   .mod .vstack{order:1}
   .tour-box{width:min(94vw,calc(86vh*9/16));width:min(94vw,calc(86svh*9/16));aspect-ratio:9/16}
 }
+/* v2: desktop: price card sizes to its content so there's no empty gap above "Book your call" */
+@media (min-width:761px){.offer{align-items:start}.price .btn{margin-top:0}.price .price-chat{margin-top:10px}}

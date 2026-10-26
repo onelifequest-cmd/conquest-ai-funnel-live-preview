@@ -32,7 +32,7 @@ const heroReady = initHero().catch(() => { docEl.classList.add('nogl'); drawStat
 
 // ---------- chat ----------
 const CHAT = chatConfig();
-if (CHAT.mode === 'live') { const f = document.querySelector('.m1-flag'); if (f) f.textContent = 'Preview · live chat · placeholder media'; }
+if (CHAT.mode === 'live') { const f = document.querySelector('.m1-flag'); if (f) f.textContent = 'Unpublished video preview · not live'; }
 const chat = createChat({ root: document.getElementById('chat'), pricing: PRICING, reduced, config: CHAT,
   onOpenChange: o => { if (lenis) o && mobile ? lenis.stop() : lenis.start(); } });
 window.__chat = chat;
