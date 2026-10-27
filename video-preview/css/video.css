@@ -46,7 +46,7 @@ body.tour-open{overflow:hidden}
 .film-vid .vcap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .film-vid .film-sound{top:14px;right:14px;padding:11px 18px 11px 14px;font-size:14.5px;background:var(--grad);border-color:rgba(255,255,255,.35)}
 .film-vid .film-sound[hidden]{display:none}
-.film-vid video::cue{font:500 clamp(13px,1.6vw,20px)/1.35 "IN",system-ui,sans-serif;background:rgba(5,11,24,.78)}
+.film-vid video::cue{font:500 clamp(13px,1.6vw,20px)/1.35 "IN",system-ui,sans-serif;background:rgba(5,11,24,.78);white-space:pre-wrap}
 @media (max-width:760px){
   .sec.film{padding:60px 0 24px}
   .film-head{margin-bottom:18px}

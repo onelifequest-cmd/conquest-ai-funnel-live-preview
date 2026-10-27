@@ -24,6 +24,21 @@
     else if (!v.paused) { fig.dataset.auto = '1'; v.pause(); }
   }), { threshold: [0, 0.25, 0.5, 0.75, 1] }).observe(v);
   document.querySelectorAll('[data-tour]').forEach(t => t.addEventListener('click', () => { if (!v.paused) { fig.dataset.auto = '1'; v.pause(); } }));
-  sync();
-  window.__film = v;
+  // captions: the .vtt sits near the top (line:8%); while the sound pill is showing, push the cues
+  // below the pill's bottom edge plus a safe gap, measured live so it holds at every size.
+  const tr = fig.querySelector('track'), GAP = 14;
+  function placeCues() {
+    const t = tr && tr.track, cues = t && t.cues; if (!cues || !cues.length) return;
+    const vr = v.getBoundingClientRect(); if (!vr.height) return;
+    let line = 8;
+    if (!b.hidden) { const br = b.getBoundingClientRect(); line = Math.min(70, Math.ceil((br.bottom - vr.top + GAP) / vr.height * 100)); }
+    for (const c of cues) { c.snapToLines = false; if (c.size !== 88) c.size = 88; if (c.line !== line) c.line = line; }
+    fig.dataset.cueLine = line;
+  }
+  if (tr) { tr.addEventListener('load', placeCues); tr.track.addEventListener('cuechange', placeCues); }
+  v.textTracks.addEventListener('change', () => setTimeout(placeCues, 0));
+  v.addEventListener('volumechange', placeCues);
+  new ResizeObserver(placeCues).observe(fig);
+  sync(); placeCues();
+  window.__film = v; window.__filmPlaceCues = placeCues;
 })();
