@@ -2,7 +2,7 @@
 // (instanced fiber-optic strands + ground grid + fireflies + automation network), ported and slimmed.
 // Theme colours come from the interactive preview's site.json. Scroll (GSAP ScrollTrigger, Lenis on desktop)
 // flies the camera across the field and grows the strands; scroll speed adds a gust.
-// Phones: fewer strands / particles, pixel ratio capped at 1.25, ~30 fps, and rendering pauses while a
+// Phones: fewer strands / particles, pixel ratio 1.0, ~30 fps, and rendering pauses while a
 // visible video is playing so playback stays smooth. Everywhere: paused when the tab is hidden.
 // ?static, prefers-reduced-motion, ?nogl or no WebGL: a static CSS gradient instead (.bgfield.static).
 const q = new URLSearchParams(location.search);
@@ -23,8 +23,8 @@ async function start() {
   const THREE = await import('../vendor/three.module.min.js');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: mobile ? 'low-power' : 'high-performance' });
   if (!renderer.getContext()) throw new Error('no context');
-  const DPR = Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.5);
-  const N = mobile ? 3500 : 18000, F = mobile ? 60 : 220, NN = mobile ? 26 : 70, FPS_CAP = mobile ? 30 : 60;
+  const DPR = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
+  const N = mobile ? 2200 : 18000, F = mobile ? 48 : 220, NN = mobile ? 22 : 70, FPS_CAP = mobile ? 30 : 60;
   renderer.setPixelRatio(DPR);
   const deep = new THREE.Color(C.deep); renderer.setClearColor(deep, 1);
   Object.assign(S, { webgl: true, strands: N, dpr: DPR, mode: 'webgl', fpsCap: FPS_CAP });
