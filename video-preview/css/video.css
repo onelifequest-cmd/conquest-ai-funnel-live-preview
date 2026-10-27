@@ -140,3 +140,21 @@ body:has(#bgfield){background:transparent}
 /* let the field show through the hero (its own orb + glows stay on top) */
 body:has(#bgfield) .hero{background:radial-gradient(900px 600px at 78% 42%,var(--hero-glow),transparent 70%),radial-gradient(700px 500px at 10% 0%,rgba(0,71,223,.18),transparent 70%),rgba(5,11,24,.5)}
 body:has(#bgfield) .ribbon{background:rgba(9,18,38,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* v9 (Oct 27 2026): three small cleanups (Patrick via Legacy)
+   1) Keep 'Ask the agent' launch pill from touching the film's LIVE badge at any width
+   2) Tighten ~100px gap above the orb on phones
+   3) (logo href → #one-text is in build.py / index.html) */
+@media (min-width:761px){
+  .sec.film.film-top{padding:120px 0 96px}
+  .film-top .film-vid{width:min(100%,calc((100vh - 430px)*16/9));min-width:min(100%,560px)}
+  /* reserve the fixed launch FAB so LIVE never sits under it */
+  .film-under{padding-right:220px;box-sizing:border-box}
+}
+@media (min-width:1240px){
+  .film-under{padding-right:0}
+}
+@media (max-width:760px){
+  .hero .wrap{padding-top:200px} /* was 300 — less empty space above the hero orb */
+  .control{padding-bottom:16px} /* was 80 — less empty space above Mission Control orb */
+}
